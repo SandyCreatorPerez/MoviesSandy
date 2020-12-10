@@ -21,9 +21,10 @@ module.exports ={
         }
     },
     unaSola : async(req,res)=>{
+        
         try{
-            const moviesjson = await Movie.findByPk(req.params.id,{include:{all:true}});
-            res.render("pelicula", {pelicula : moviesjson});
+            const moviejson = await Movie.findByPk(req.params.id);
+            res.render("listado", {movie : moviejson});
             
         }catch(error){
             console.log(error);

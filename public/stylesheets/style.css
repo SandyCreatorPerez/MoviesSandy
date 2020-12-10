@@ -1,6 +1,28 @@
-body {
-  padding: 50px;
+*{
+  padding: 0px;
+  margin: 0px;
+}
+.cuerpoIndex {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height:65vh; 
+  background-image: url("../images/2196.jpg");
+
+}
+.imagenindex{
+  width: 100%;
+}
+.bienvenida {
+  width: 100%;
+  padding:20px;
+  margin-inline: 50px;
+  text-align: center;
+  text-decoration: dashed;
+  font-size: 50px;
+  background-color: transparent;
+  color: blue; 
 }
 
 a {

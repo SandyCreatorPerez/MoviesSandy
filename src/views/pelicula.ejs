@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include('header.ejs') %> 
+<% peliculas.forEach(peliculas=> { %>
+        
+        <section class="product-box">
+            <a href= <%= "/movies/detail/" + peliculas.id %> >
+                        <figure class="product-box_image">
+                            <img src= <%= "/images/images" + peliculas.id +".jpg" %> alt="imagen de producto">
+                        </figure>
+                        <article  class="product-box_data">
+                            <h2>Premios<%= " " +peliculas.awards%> </h2>
+                            <span> <%= peliculas.release_date %></span>
+                            <p><%= peliculas.title %> </p>
+                            <i class="fas fa-film "></i>
+                        </article>
+            </a>
+        </section>	
+            
+    </div>
+<% }) %>
+
+<%- include('footer.ejs') %>
+  
