@@ -1,25 +1,25 @@
-<!DOCTYPE html>
-<html lang="es">
 
 <%- include('header.ejs') %> 
-<% peliculas.forEach(peliculas=> { %>
-        
-        <section class="product-box">
-            <a href= <%= "/movies/detail/" + peliculas.id %> >
-                        <figure class="product-box_image">
-                            <img src= <%= "/images/images" + peliculas.id +".jpg" %> alt="imagen de producto">
-                        </figure>
-                        <article  class="product-box_data">
-                            <h2>Premios<%= " " +peliculas.awards%> </h2>
-                            <span> <%= peliculas.release_date %></span>
-                            <p><%= peliculas.title %> </p>
-                            <i class="fas fa-film "></i>
-                        </article>
-            </a>
-        </section>	
-            
-    </div>
-<% }) %>
+        <div>
+            <h2>Elementos de la Pelicula: <%= pelicula.title %></h2>
+        </div>
+        <img src= <%= "/images/images" + pelicula.id +".jpg" %> alt="product image" class="product-detail-img">
+            <div>
+                <article>
+                    <h2> <%= pelicula.title %> </h2>
+                    <p>Rating <%= pelicula.rating %> </p>
+                    <b><%= pelicula.length +" " %>Min</b>
+                    <p>Galardones <%= pelicula.awards %></p>
+                    <p><%= pelicula.release_date %> </p>                   
+
+                    <a href= <%= "/movies/edit/" + pelicula.id %> class="action-button edit">EDITAR</a>
+                    <form action="/movies/delete/<%=pelicula.id %>?_method=DELETE" method ="post" style="display: inline-flex">
+                        <button type="submit" class="action-button delete">ELIMINAR</button>
+                    </form>
+                </article>
+            </div>
+        </div>
+
 
 <%- include('footer.ejs') %>
   

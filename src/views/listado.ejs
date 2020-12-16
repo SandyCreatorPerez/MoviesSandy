@@ -4,12 +4,12 @@
 <%- include('header.ejs') %> 
 
 <% peliculas.forEach(peliculas=> { %>
-						 
+					 
 			<a href= <%= "/movies/detail/" + peliculas.id %> >
-						<div class="imagenProducto">
-							<img src= <%= "/images/images" + peliculas.id +".jpg" %> alt="imagen de producto">
+						<div>
+							<img src= <%= "/images/images" + peliculas.id +".jpg" %> alt="imagen de la peli">
 						</div>
-						<article  class="infoProducto">
+						<article>
 							<h2>Premios<%= " " +peliculas.awards%> </h2>
 							<h3> <%= peliculas.release_date %></h3>
 							<p><%= peliculas.title %> </p>
