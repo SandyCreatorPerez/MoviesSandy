@@ -1,37 +1,32 @@
-module.exports = (sequelize,dataTypes)=> {
+const {sequelize,DataTypes}= require("sequelize");
+var moment = require('moment');
+module.exports =(sequelize,DataTypes)=>{
 
-const Movie = sequelize.define('Movie', {
-  // Model attributes are defined here
+    const Movie = sequelize.define("Movie",{
 
-  id: {
-    type: dataTypes.INTEGER,
-    allowNull: false,
-    primaryKey:true
-  },
-  awards: {
-    type: dataTypes.TINYINT
-    // allowNull defaults to true
-  },
-  title: {
-    type: dataTypes.STRING
-    // allowNull defaults to true
-  },
-  length:{
-    type: dataTypes.DECIMAL
-    // allowNull defaults to true
-  },
-  release_date:{
-  type: dataTypes.STRING
-    // allowNull defaults to true
-  }
+        title : DataTypes.STRING,
 
-},
- {
-  // Other model options go here
-  timestamps: false,
-  tableName: 'movies'
-});
+        rating : DataTypes.DECIMAL,
 
-// `sequelize.define` also returns the model
-return Movie;
+        awards : DataTypes.INTEGER,
+
+        release_date :{
+            type: DataTypes.DATEONLY,
+            get: function() {
+              return moment.utc(this.getDataValue('release_date')).format('DD-MM-YYYY');
+            }
+          },
+        length : DataTypes.INTEGER,
+        genre_id : DataTypes.INTEGER
+
+    })
+    
+    Movie.associate = (models =>{
+        Movie.belongsTo(models.Genre);
+        Movie.belongsToMany(models.Actor,{
+            as: "actores",
+            through : "actor_movie"
+        })
+    })
+    return Movie;
 }

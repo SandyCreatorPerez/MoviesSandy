@@ -3,7 +3,7 @@
         <div>
             <h2>Elementos de la Pelicula: <%= pelicula.title %></h2>
         </div>
-        <img src= <%= "/images/images" + pelicula.id +".jpg" %> alt="product image" class="product-detail-img">
+        <img src= <%= "/images/images" + pelicula.id +".jpg" %> alt="product image">
             <div>
                 <article>
                     <h2> <%= pelicula.title %> </h2>
@@ -12,9 +12,9 @@
                     <p>Galardones <%= pelicula.awards %></p>
                     <p><%= pelicula.release_date %> </p>                   
 
-                    <a href= <%= "/movies/edit/" + pelicula.id %> class="action-button edit">EDITAR</a>
-                    <form action="/movies/delete/<%=pelicula.id %>?_method=DELETE" method ="post" style="display: inline-flex">
-                        <button type="submit" class="action-button delete">ELIMINAR</button>
+                    <a href= <%= "/movies/edit/" + pelicula.id %> >EDITAR</a>
+                    <form action="/movies/delete/<%=pelicula.id %>?_method=DELETE" method ="post">
+                        <button type="submit">BORRAR</button>
                     </form>
                 </article>
             </div>

@@ -3,17 +3,27 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+const methodOverride =  require('method-override');
 var indexRouter = require('./src/routes/index');
 var usersRouter = require('./src/routes/users');
+var moment = require('moment');
+
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'src/views'));
 app.set('view engine', 'ejs');
 
+
 app.use(logger('dev'));
 app.use(express.json());
+// accept url encoded
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+// accept json 
+app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));

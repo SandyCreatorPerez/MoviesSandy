@@ -1,0 +1,48 @@
+
+<%- include('header.ejs') %> 
+<div>
+<form action="/movies/create" method="POST">
+    <div>
+        <div>
+            <label for="title" >Titulo:</label>
+            <input type="text" id="name" name="title"  placeholder = "Nombre de la Pelicula">
+        </div>
+        <div >
+            <label for="rating">Rating:</label>
+            <input type="text" id="price" name="rating"   placeholder = '7' >
+        </div>
+        <div>
+            <label for="awards">Galardones:</label>
+            <input type="text" id="discount" name="awards"   placeholder = '5'>
+        </div>
+        <div>
+            <label for="length">Duracion:</label>
+            <input type="text" id="discount" name="length"   placeholder = '100'>
+        </div>
+        <div>
+            <label for="release_date">Estreno:</label>
+            <input type="date" id="discount" name="release_date"   placeholder = '17-11-2020'>
+        </div>
+        <div >
+            <label for="">Seleccione Genero:</label>
+            <select name="genre_id" id="">
+                <%generos.forEach(genero => {%>
+                    <option value = '<%= genero.id%>' ><%= genero.name %></option>
+                <%})%>
+            </select>
+        </div>
+        <div>
+            <label for="">Seleccione Actores:</label>
+            <select name = 'actores' multiple>
+                <%actores.forEach(actor => {%>
+                <option value = '<%= actor.id%>' ><%= actor.first_name %><%= actor.last_name %></option>
+                <%})%>
+            </select>
+        </div>
+        <div>
+            <button type="submit">Crear Pelicula</button>
+        </div>
+    </div>
+</form>
+<div>
+<%- include('footer.ejs') %>
